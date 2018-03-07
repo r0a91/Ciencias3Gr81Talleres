@@ -24,3 +24,7 @@ class Pila:
     def es_vacia(self):
         """ Devuelve True si la lista está vacía, False si no. """
         return self.items == []
+        
+    def obtener_num_elems(self):
+		return len(self.items)
+	
