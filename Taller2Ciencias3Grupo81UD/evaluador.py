@@ -10,26 +10,26 @@ class Evaluador:
     
     
     def calcular_solucion(self):
-        
+        print (self.exps)
         datos_exp=[]
         
+        
         for x in self.exps:
-
-            llave = x[len(x) - 2]
-            datos_calculo = x[:len(x)-2]
+            llave = x[len(x)-2]
+            datos_calculo = x[0:len(x)-2]
             valor=None
             datos_exp.append([llave, datos_calculo, valor]) 
             #print(llave)
-            print(datos_calculo)
+            #print("datos",datos_calculo)
             
         #evaluar expresiones
-        print("Resultados: ")
+        #print("Resultados: ")
         for x in datos_exp:
-			a = expresion.Expresion(x[1])
-			a.array_to_cola()
-			a.calcular()
-			x[2] = a.get_result()
-			print(x[0], " = ", x[2])
+            a = expresion.Expresion(x[1])
+            a.array_to_cola()
+            a.calcular()
+            x[2] = a.get_result()
+            print(x[0], " = ", x[2])
 			
 			
 			
