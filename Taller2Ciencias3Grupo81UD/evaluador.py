@@ -1,4 +1,5 @@
 import expresion
+import variable
 
 class Evaluador:
     def __init__(self):
@@ -10,7 +11,7 @@ class Evaluador:
     
     
     def calcular_solucion(self):
-        print (self.exps)
+        #print (self.exps)
         datos_exp=[]
         
         
@@ -24,17 +25,23 @@ class Evaluador:
             
         #evaluar expresiones
         #print("Resultados: ")
+        a = expresion.Expresion()
         for x in datos_exp:
-            a = expresion.Expresion(x[1])
-            a.array_to_cola()
+            
+            a.array_to_cola(x[1])
             a.calcular()
             x[2] = a.get_result()
-            print(x[0], " = ", x[2])
-			
-			
-			
-			    
-        
-        
-
-
+            b=x[0]
+            c=x[2]
+            print(b, " = ",c)
+            if (x[0]=='x'):
+                a.equis.setValor(c)
+                print(a.equis.getValor(),"valor x")
+            elif(x[0]=='y'):
+                
+                a.ye.setValor(c)
+                print(a.ye.getValor(),"valor x")
+            elif(x[0]=='z'):
+                
+                a.zeta.setValor(c)
+                print(a.zeta.getValor(),"valor x")

@@ -1,14 +1,28 @@
 import pila
 import cola
+class var:
+    def __init__(self,nombre="",valor=0):
+        self.nombre=nombre
+        self.valor=valor
+    def getNombre(self):
+        return self.nombre
+    def getValor(self):
+        return self.valor
+    def setValor(self,val):
+        self.valor=val
 class Expresion:
 
-    def __init__(self, lista):
-        self.lista = lista
+    def __init__(self):
+        self.lista = []
         self.Cola = cola.Cola()
         self.pila = pila.Pila()
+        self.equis=var("x",1)
+        self.ye=var("y",2)
+        self.zeta=var("z",3)
     
-    def array_to_cola(self):
-        for e in self.lista:
+    def array_to_cola(self,lista):
+        self.Cola.limpiar()
+        for e in lista:
             
             self.Cola.encolar(e)
 
@@ -18,20 +32,36 @@ class Expresion:
             print("No hay mas elementos en la cola")
         else:
             dato = self.Cola.desencolar()
-            print(dato)
+            #print(dato)
             if (dato == '+' or dato == '-'  or dato == '*' or dato == '/'):
                 a = self.pila.desapilar()
                 b = self.pila.desapilar()
+                if (a=='x'):
+                    a=self.equis.getValor()
+                elif(a=='y'):
+                    a=self.ye.getValor()
+                elif(a=='z'):
+                    a=self.zeta.getValor()
+                if (b=='x'):
+                    b=self.equis.getValor()
+                elif(b=='y'):
+                    b=self.ye.getValor()
+                elif(b=='z'):
+                    b=self.zeta.getValor()
+                print(a)
+                print("b ",b)
                 try:
                     a = float(a)
-                    print(a)
+                    
                 except ValueError:
-                    print(a, "No es esta calculado")
+                    print("no se pudo comvertir a float ",a)
+
                 try:
                     b = float(b)
-                    print(b)
+                    
                 except ValueError:
-                    print(b, "No esta calculado")
+                    print("no se pudo comvertir a float " ,b)
+
                 if dato == '+':
                     r = b+a
                     self.pila.apilar(r)
