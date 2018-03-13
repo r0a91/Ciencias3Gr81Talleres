@@ -1,5 +1,6 @@
 import pila
 import cola
+import sys
 class var:
     def __init__(self,nombre="",valor=0):
         self.nombre=nombre
@@ -54,13 +55,14 @@ class Expresion:
                     a = float(a)
                     
                 except ValueError:
-                    print("no se pudo comvertir a float ",a)
-
+                    print("No se puede evaluar: ",a)
+                    sys.exit(1)
                 try:
                     b = float(b)
                     
                 except ValueError:
-                    print("no se pudo comvertir a float " ,b)
+                    print("No se puede evaluar: " ,b)
+                    sys.exit(1)
 
                 if dato == '+':
                     r = b+a
@@ -87,8 +89,7 @@ class Expresion:
         else:
             for i in self.pila.items:
                 print(i)
-                print("Ingreso la expresion: ", str(self.lista),
-                      "de manera erronea")
+            print("Ingreso la expresion: ", str(self.lista),"de manera erronea")
 	
 	
 	
